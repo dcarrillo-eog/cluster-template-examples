@@ -18,8 +18,7 @@ common:
 cfgparam: {{ $nodepool.cfgparam }}
 {{- end }}
 cloneFrom: {{ $nodepool.cloneFrom }}
-cloudConfig: |
-{{ $nodepool.cloudConfig | indent 2 }}
+cloudConfig: {{ $nodepool.cloudConfig | quote }}
 cloudinit: {{ $nodepool.cloudinit }}
 contentLibrary: {{ $nodepool.contentLibrary }}
 cpuCount: {{ $nodepool.cpuCount | quote }}
@@ -27,7 +26,7 @@ creationType: {{ $nodepool.creationType }}
 customAttribute: {{ $nodepool.customAttribute }}
 datacenter: {{ $nodepool.datacenter }}
 datastore: {{ $nodepool.datastore }}
-datastoreCluster: {{ $nodepool.datastoreCluster }}
+datastoreCluster: {{ default "" $nodepool.datastoreCluster }}
 diskSize: {{ $nodepool.diskSize | quote }}
 folder: {{ $nodepool.folder }}
 hostsystem: {{ $nodepool.hostsystem }}
@@ -42,8 +41,8 @@ vappIpallocationpolicy: {{ $nodepool.vappIpallocationpolicy }}
 vappIpprotocol: {{ $nodepool.vappIpprotocol }}
 vappProperty: {{ $nodepool.vappProperty }}
 vappTransport: {{ $nodepool.vappTransport }}
-vcenter: {{ $nodepool.vcenter }}
-vcenterPort: {{ $nodepool.vcenterPort | quote }}
+vcenter: {{ default "" $nodepool.vcenter }}
+vcenterPort: {{ default "443" $nodepool.vcenterPort | quote }}
 ---
 {{- end }}
 {{ $nodepool := .Values.nodepool }}
@@ -66,8 +65,7 @@ common:
 cfgparam: {{ $nodepool.cfgparam }}
 {{- end }}
 cloneFrom: {{ $nodepool.cloneFrom }}
-cloudConfig: |
-{{ $nodepool.cloudConfig | indent 2 }}
+cloudConfig: {{ $nodepool.cloudConfig | quote }}
 cloudinit: {{ $nodepool.cloudinit }}
 contentLibrary: {{ $nodepool.contentLibrary }}
 cpuCount: {{ $nodepool.cpuCount | quote }}
@@ -75,7 +73,7 @@ creationType: {{ $nodepool.creationType }}
 customAttribute: {{ $nodepool.customAttribute }}
 datacenter: {{ $nodepool.datacenter }}
 datastore: {{ $nodepool.datastore }}
-datastoreCluster: {{ $nodepool.datastoreCluster }}
+datastoreCluster: {{ default "" $nodepool.datastoreCluster }}
 diskSize: {{ $nodepool.diskSize | quote }}
 folder: {{ $nodepool.folder }}
 hostsystem: {{ $nodepool.hostsystem }}
@@ -90,9 +88,7 @@ vappIpallocationpolicy: {{ $nodepool.vappIpallocationpolicy }}
 vappIpprotocol: {{ $nodepool.vappIpprotocol }}
 vappProperty: {{ $nodepool.vappProperty }}
 vappTransport: {{ $nodepool.vappTransport }}
-vcenter: {{ $nodepool.vcenter }}
-vcenterPort: {{ $nodepool.vcenterPort }}
+vcenter: {{ default "" $nodepool.vcenter }}
+vcenterPort: {{ default "443" $nodepool.vcenterPort | quote }}
 {{- end }}
 {{- end }}
-
-
